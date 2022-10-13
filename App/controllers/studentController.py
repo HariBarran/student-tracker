@@ -44,14 +44,14 @@ def update_review(id, upvote, downvote):
         return False
     else:
         review = Reviews.query.get(id)
-        print(review.toJSON())
-        review.upvote+=upvote
-        review.downvote+=downvote
-        db.session.commit()
-        if(upvote != 0 and downvote != 0):
-            karma_calc(review.studentId)
-        print(review.toJSON())
-        return review
+        if(review):
+            review.upvote+=upvote
+            review.downvote+=downvote
+            db.session.commit()
+            if(upvote != 0 and downvote != 0):
+                karma_calc(review.studentId)
+            return review
+        return False
         
 
 def karma_calc(studentId):
