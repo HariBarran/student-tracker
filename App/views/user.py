@@ -11,9 +11,9 @@ user_views = Blueprint('user_views', __name__, template_folder='../templates')
 #     users = get_all_students()
 #     return jsonify(users)
 
-@user_views.route('/users', methods=['GET'])
+@user_views.route('/students', methods=['GET'])
 def get_user_page():
-    users = get_all_users()
+    users = get_all_students()
     return render_template('users.html', users=users)
 
 @user_views.route('/api/users', methods=['GET'])

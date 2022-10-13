@@ -5,23 +5,15 @@ from App.controllers import *
 
 student_views = Blueprint('student_views', __name__, template_folder='../templates')
 
-
-
 # @student_views.route('/students', methods=['GET'])
-# def get_user_page():
-#     users = get_all_users()
-#     return render_template('users.html', users=users)
+# def get_students_page():
+#     students = get_all_students()
+#     return render_template('students.html', students=students)
 
 @student_views.route('/api/students', methods=['GET'])
 def get_students_action():
     students = get_all_students()
     return jsonify(students)
-
-# @student_views.route('/api/students', methods=['GET'])
-# def get_student_action():
-#     students = get_all_students()
-#     return jsonify(students)
-
 
 @student_views.route('/api/students', methods=['POST'])
 def create_student_action():
