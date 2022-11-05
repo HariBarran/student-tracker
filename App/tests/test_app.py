@@ -97,14 +97,16 @@ class UsersIntegrationTests(unittest.TestCase):
     def test_create_user(self):
         user = create_user("rick", "bobpass")
         assert user.username == "rick"
-    
+        
+    #function to ensure that the student record in database has the correct values
     def test_create_student(self):
         student = create_student(812394821, "Richard")
         assert student
     
+    #function to ensure the reviews are created for the correct user
     def test_create_review(self):
-        review = create_review( "Hello! this peepee sucks poopoo", 812394821, 1, 0)
-        assert review.message == "Hello! this peepee sucks poopoo"
+        review = create_review( "This student is too talkative in class", 812394821, 1, 0)
+        assert review.message == "This student is too talkative in class"
 
     def test_get_all_users_json(self):
         users_json = get_all_users_json()
