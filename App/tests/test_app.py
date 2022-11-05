@@ -98,6 +98,7 @@ class UsersIntegrationTests(unittest.TestCase):
         user = create_user("rick", "bobpass")
         assert user.username == "rick"
     
+
     def test_create_student(self):
         student = create_student(812394821, "Richard")
         assert student
@@ -110,6 +111,7 @@ class UsersIntegrationTests(unittest.TestCase):
         users_json = get_all_users_json()
         self.assertListEqual([{"id":1, "username":"bob"}, {"id":2, "username":"rick"}], users_json)
 
+    #Function to ensure the student ID entered contains the correct values
     def test_studentID_validation(self):
         studentId = 816014286
         valid = validate_student_id(studentId)
@@ -118,19 +120,10 @@ class UsersIntegrationTests(unittest.TestCase):
     def test_get_student(self):
         student = get_student(812394821)
         assert student.studentId == 812394821
-
     
 
-
-    # def test_get_students_with_reviews_Json(self):
-    #     students = get_all_students()
-    #     self.assertListEqual([{"id": 1, "karma": 0.0, "name": "Richard", "reviews": [{"downvote": 0, "id": 1, "message": "Hello! this peepee sucks poopoo", "studentId": 812394821, "upvote": 0}]}], students)
-
-
-        
-
-
-    # Tests data changes in the database
+    #Test to ensure an updated user is retrieved with the updated values
+    # Tests data changes in the database 
     def test_update_user(self):
         update_user(1, "ronnie")
         user = get_user(1)
